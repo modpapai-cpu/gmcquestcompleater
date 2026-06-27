@@ -1,10 +1,11 @@
 Set-ExecutionPolicy Bypass -Scope Process -Force
 Clear-Host
 
-Write-Host "================================"
-Write-Host "   GMC Vencord Auto Installer"
-Write-Host "================================"
-
+Write-Host ""
+Write-Host "==========================================" -ForegroundColor Cyan
+Write-Host "      GMC Vencord Auto Installer" -ForegroundColor White
+Write-Host "==========================================" -ForegroundColor Cyan
+Write-Host ""
 
 # ADMIN CHECK
 $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
@@ -40,7 +41,7 @@ $env:Path =
 
 if(Get-Command winget -ErrorAction SilentlyContinue){
 
-Write-Host "[OK] Winget Installed"
+Write-Host "[✓] Winget Installed" -ForegroundColor Green
 
 }else{
 
@@ -56,7 +57,7 @@ Write-Host "Skipping Winget..."
 
 if(Get-Command git -ErrorAction SilentlyContinue){
 
-Write-Host "[OK] Git Installed"
+Write-Host "[✓] Git Installed" -ForegroundColor Green
 
 }else{
 
@@ -93,7 +94,7 @@ exit
 
 if(Get-Command node -ErrorAction SilentlyContinue){
 
-Write-Host "[OK] Node Installed"
+Write-Host "[✓] Node Installed" -ForegroundColor Green
 
 }else{
 
@@ -147,8 +148,8 @@ $currentPnpm=$null
 
 
 if($currentPnpm -eq $needPnpm){
+Write-Host "[✓] PNPM 9.15.9 Installed" -ForegroundColor Green
 
-Write-Host "[OK] PNPM 9.15.9 Installed"
 
 }else{
 
@@ -226,7 +227,7 @@ exit
 cd C:\Vencord
 
 
-Write-Host "Vencord Ready"
+Write-Host "[✓] Vencord Ready" -ForegroundColor Green
 
 
 
@@ -383,7 +384,8 @@ InstallPlugin `
 # =========================
 
 
-Write-Host "Installing Packages..."
+Write-Host ""
+Write-Host "Installing Packages..." -ForegroundColor Cyan
 
 pnpm install --no-frozen-lockfile
 
@@ -394,7 +396,8 @@ exit
 }
 
 
-Write-Host "Building Vencord..."
+Write-Host ""
+Write-Host "Building Vencord..." -ForegroundColor Blue
 
 pnpm build
 
@@ -437,12 +440,13 @@ $discord `
 
 }
 
-
-
 Write-Host ""
-Write-Host "================================"
-Write-Host " GMC VENCORD READY SUCCESSFULLY"
-Write-Host "================================"
+Write-Host "#############################################" -ForegroundColor Green
+Write-Host "#                                           #" -ForegroundColor Green
+Write-Host "#      GMC INSTALL COMPLETED SUCCESSFULLY   #" -ForegroundColor White -BackgroundColor DarkGreen
+Write-Host "#                                           #" -ForegroundColor Green
+Write-Host "#############################################" -ForegroundColor Green
+Write-Host ""
 
 
 pause
