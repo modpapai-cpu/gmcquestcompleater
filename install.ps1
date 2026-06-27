@@ -360,7 +360,7 @@ Write-Host "$name OFF - Skipped (Not Removed)"
 # =========================
 InstallPlugin `
 "GMCQUESTCOMPLEATER" `
-"1S012lWbNcwhmkRRRLt1tcF4o3e_5dUP8"
+"172RR1yN5cX78cFE4IHd-oaIISYYIgWCj"
 
 InstallPlugin `
 "FakeDeafen" `
