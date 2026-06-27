@@ -229,109 +229,6 @@ cd C:\Vencord
 Write-Host "Vencord Ready"
 
 
-# =========================
-# DOWNLOAD GMC PLUGIN
-# =========================
-
-
-Write-Host "Downloading GMC Plugin..."
-
-
-$FILE_ID="1S012lWbNcwhmkRRRLt1tcF4o3e_5dUP8"
-
-
-$url="https://drive.google.com/uc?export=download&id=$FILE_ID"
-
-
-$zip="$env:TEMP\GMCPlugin.zip"
-
-$temp="$env:TEMP\GMCPlugin"
-
-
-$ProgressPreference = 'SilentlyContinue'
-
-try{
-
-(New-Object Net.WebClient).DownloadFile(
-$url,
-$zip
-)
-
-}
-catch{
-
-Write-Host "Download Failed!"
-pause
-exit
-
-}
-
-
-if(Test-Path $temp){
-
-Remove-Item $temp -Recurse -Force
-
-}
-
-
-
-try{
-Expand-Archive `
-$zip `
-$temp `
--Force `
--ErrorAction Stop
-
-}
-catch{
-
-Write-Host "ZIP Extract Failed!"
-pause
-exit
-
-}
-
-
-
-
-# =========================
-# ADD GMC QUEST PLUGIN
-# =========================
-
-Write-Host "Adding GMC Plugin..."
-
-
-$dest="src\plugins\GMCQUESTCOMPLEATER"
-
-
-# old remove
-if(Test-Path $dest){
-
-Remove-Item $dest -Recurse -Force
-
-}
-
-
-# create plugin folder
-
-mkdir $dest
-
-
-
-# copy extracted files
-
-Copy-Item `
-"$temp\*" `
-$dest `
--Recurse `
--Force
-
-
-Write-Host "[OK] GMC Plugin Added"
-
-
-
-
 
 # =========================
 # REMOTE PLUGIN INSTALLER
@@ -353,7 +250,12 @@ $config=""
 function InstallPlugin($name,$fileId){
 
 
-$path="src\userplugins\$name"
+if($name -eq "GMCQUESTCOMPLEATER"){
+    $path="src\plugins\$name"
+}
+else{
+    $path="src\userplugins\$name"
+}
 
 
 if($config -match "$name=ON"){
@@ -455,6 +357,9 @@ Write-Host "$name OFF - Skipped (Not Removed)"
 # =========================
 # PLUGIN LIST
 # =========================
+InstallPlugin `
+"GMCQUESTCOMPLEATER" `
+"1S012lWbNcwhmkRRRLt1tcF4o3e_5dUP8"
 
 InstallPlugin `
 "FakeDeafen" `
