@@ -377,7 +377,7 @@ InstallPlugin `
 
 InstallPlugin `
 "QUEST26" `
-"1AfLUNqc29L2bm-eXs2nvNfY3ZcVMPUkj"
+"1fHLeU-E0brTDBSpCvq-icwFXdPPVh6CK"
 
 
 # =========================
