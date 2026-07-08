@@ -327,7 +327,7 @@ $path `
 }
 
 
-mkdir $path
+New-Item -ItemType Directory -Path $path -Force | Out-Null
 
 
 Copy-Item `
