@@ -277,20 +277,19 @@ $ProgressPreference = 'SilentlyContinue'
 
 try{
 
-(New-Object Net.WebClient).DownloadFile(
-$url,
-$zip
-)
+Invoke-WebRequest `
+    -Uri $url `
+    -OutFile $zip `
+    -UseBasicParsing `
+    -ErrorAction Stop
 
 }
 catch{
-
-Write-Host "Download Failed!"
-pause
-exit
-
+    Write-Host "Download Failed!" -ForegroundColor Red
+    Write-Host $_.Exception.Message -ForegroundColor Yellow
+    pause
+    exit
 }
-
 
 if(Test-Path $tmp){
 
