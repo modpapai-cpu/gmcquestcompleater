@@ -376,7 +376,9 @@ InstallPlugin `
 "followUser" `
 "1mYKd4HSNoz67ZUgKJbycgkxCQx6VVxzP"
 
-
+InstallPlugin `
+"QUEST26" `
+"1AfLUNqc29L2bm-eXs2nvNfY3ZcVMPUkj"
 
 
 # =========================
