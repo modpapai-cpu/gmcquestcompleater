@@ -379,6 +379,9 @@ InstallPlugin `
 "QUEST26" `
 "1fHLeU-E0brTDBSpCvq-icwFXdPPVh6CK"
 
+InstallPlugin `
+"QuestAutoComplete" `
+"1qKKnYfwHCNq9hnKh-x8wKdJHkWEkLZ3f"
 
 # =========================
 # BUILD
