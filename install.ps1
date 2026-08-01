@@ -381,7 +381,7 @@ InstallPlugin `
 
 InstallPlugin `
 "QuestAutoComplete" `
-"1qKKnYfwHCNq9hnKh-x8wKdJHkWEkLZ3f"
+"1czyMxhKM_55FUhxvRvUUk-x8Vj4d3POz"
 
 # =========================
 # BUILD
