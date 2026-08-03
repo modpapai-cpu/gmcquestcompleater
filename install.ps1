@@ -41,7 +41,7 @@ $env:Path =
 
 if(Get-Command winget -ErrorAction SilentlyContinue){
 
-Write-Host "[✓] Winget Installed" -ForegroundColor Green
+Write-Host "[âœ“] Winget Installed" -ForegroundColor Green
 
 }else{
 
@@ -57,7 +57,7 @@ Write-Host "Skipping Winget..."
 
 if(Get-Command git -ErrorAction SilentlyContinue){
 
-Write-Host "[✓] Git Installed" -ForegroundColor Green
+Write-Host "[âœ“] Git Installed" -ForegroundColor Green
 
 }else{
 
@@ -94,7 +94,7 @@ exit
 
 if(Get-Command node -ErrorAction SilentlyContinue){
 
-Write-Host "[✓] Node Installed" -ForegroundColor Green
+Write-Host "[âœ“] Node Installed" -ForegroundColor Green
 
 }else{
 
@@ -148,7 +148,7 @@ $currentPnpm=$null
 
 
 if($currentPnpm -eq $needPnpm){
-Write-Host "[✓] PNPM 9.15.9 Installed" -ForegroundColor Green
+Write-Host "[âœ“] PNPM 9.15.9 Installed" -ForegroundColor Green
 
 
 }else{
@@ -227,7 +227,7 @@ exit
 cd C:\Vencord
 
 
-Write-Host "[✓] Vencord Ready" -ForegroundColor Green
+Write-Host "[âœ“] Vencord Ready" -ForegroundColor Green
 
 
 
@@ -429,6 +429,10 @@ Write-Host "Inject Failed!"
 pause
 exit
 }
+Start-Sleep -Milliseconds 800
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$OutputEncoding = [System.Text.Encoding]::UTF8
+Clear-Host
 # Delete plugin source folders after successful build
 
 $pluginFolders = @(
@@ -476,4 +480,7 @@ Write-Host "#############################################" -ForegroundColor Gree
 Write-Host ""
 
 
-pause
+Write-Host ""
+Write-Host "Press Enter to Exit..." -ForegroundColor Red
+[void][System.Console]::ReadLine()
+exit
