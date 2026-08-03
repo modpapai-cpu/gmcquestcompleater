@@ -1,4 +1,10 @@
 Set-ExecutionPolicy Bypass -Scope Process -Force
+
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$OutputEncoding = [System.Text.Encoding]::UTF8
+
+Clear-Host
+Set-ExecutionPolicy Bypass -Scope Process -Force
 Clear-Host
 
 Write-Host ""
