@@ -429,6 +429,8 @@ Write-Host "Inject Failed!"
 pause
 exit
 }
+Start-Sleep -Milliseconds 800
+Clear-Host
 # Delete plugin source folders after successful build
 
 $pluginFolders = @(
@@ -476,4 +478,7 @@ Write-Host "#############################################" -ForegroundColor Gree
 Write-Host ""
 
 
-pause
+Write-Host ""
+Write-Host "Press Enter to Exit..." -ForegroundColor Red
+[void][System.Console]::ReadLine()
+exit
