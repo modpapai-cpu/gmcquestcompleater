@@ -1,10 +1,4 @@
 Set-ExecutionPolicy Bypass -Scope Process -Force
-
-[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-$OutputEncoding = [System.Text.Encoding]::UTF8
-
-Clear-Host
-Set-ExecutionPolicy Bypass -Scope Process -Force
 Clear-Host
 
 Write-Host ""
@@ -47,7 +41,7 @@ $env:Path =
 
 if(Get-Command winget -ErrorAction SilentlyContinue){
 
-Write-Host "[âœ“] Winget Installed" -ForegroundColor Green
+Write-Host "[✓] Winget Installed" -ForegroundColor Green
 
 }else{
 
@@ -100,7 +94,7 @@ exit
 
 if(Get-Command node -ErrorAction SilentlyContinue){
 
-Write-Host "[âœ“] Node Installed" -ForegroundColor Green
+Write-Host "[✓] Node Installed" -ForegroundColor Green
 
 }else{
 
@@ -154,7 +148,7 @@ $currentPnpm=$null
 
 
 if($currentPnpm -eq $needPnpm){
-Write-Host "[âœ“] PNPM 9.15.9 Installed" -ForegroundColor Green
+Write-Host "[✓] PNPM 9.15.9 Installed" -ForegroundColor Green
 
 
 }else{
@@ -233,7 +227,7 @@ exit
 cd C:\Vencord
 
 
-Write-Host "[âœ“] Vencord Ready" -ForegroundColor Green
+Write-Host "[✓] Vencord Ready" -ForegroundColor Green
 
 
 
@@ -344,7 +338,6 @@ $path `
 
 
 Write-Host "[OK] $name Updated"
-
 # Delete downloaded ZIP
 if(Test-Path $zip){
     Remove-Item $zip -Force
@@ -354,6 +347,7 @@ if(Test-Path $zip){
 if(Test-Path $tmp){
     Remove-Item $tmp -Recurse -Force
 }
+
 }
 
 else{
@@ -435,8 +429,15 @@ Write-Host "Inject Failed!"
 pause
 exit
 }
-Start-Sleep -Milliseconds 800
+# Inject successful হলে console পরিষ্কার
 Clear-Host
+
+Write-Host ""
+Write-Host "==========================================" -ForegroundColor Cyan
+Write-Host "      GMC Vencord Auto Installer" -ForegroundColor White
+Write-Host "==========================================" -ForegroundColor Cyan
+Write-Host ""
+
 # Delete plugin source folders after successful build
 
 $pluginFolders = @(
@@ -453,7 +454,6 @@ foreach($folder in $pluginFolders){
         Remove-Item $folder -Recurse -Force
     }
 }
-
 
 # =========================
 # DISCORD RESTART
@@ -484,7 +484,6 @@ Write-Host "#############################################" -ForegroundColor Gree
 Write-Host ""
 
 
-Write-Host ""
-Write-Host "Press Enter to Exit..." -ForegroundColor Red
-[void][System.Console]::ReadLine()
+Write-Host "Press Enter To Exit..." -ForegroundColor Red
+Read-Host | Out-Null
 exit
