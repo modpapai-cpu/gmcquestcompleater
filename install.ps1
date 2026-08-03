@@ -63,7 +63,7 @@ Write-Host "Skipping Winget..."
 
 if(Get-Command git -ErrorAction SilentlyContinue){
 
-Write-Host "[âœ“] Git Installed" -ForegroundColor Green
+Write-Host "[✓] Git Installed" -ForegroundColor Green
 
 }else{
 
