@@ -429,10 +429,6 @@ Write-Host "Inject Failed!"
 pause
 exit
 }
-Start-Sleep -Milliseconds 800
-[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-$OutputEncoding = [System.Text.Encoding]::UTF8
-Clear-Host
 # Delete plugin source folders after successful build
 
 $pluginFolders = @(
@@ -480,7 +476,4 @@ Write-Host "#############################################" -ForegroundColor Gree
 Write-Host ""
 
 
-Write-Host ""
-Write-Host "Press Enter to Exit..." -ForegroundColor Red
-[void][System.Console]::ReadLine()
-exit
+pause
