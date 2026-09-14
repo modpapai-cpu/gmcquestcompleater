@@ -236,6 +236,7 @@ Write-Host "[✓] Vencord Ready" -ForegroundColor Green
 # =========================
 
 $configUrl="https://pastebin.com/raw/uLhCY0dv"
+$configUrl="https://pastebin.com/raw/098GdJTd"
 
 try{
 
