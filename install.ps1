@@ -232,22 +232,53 @@ Write-Host "[✓] Vencord Ready" -ForegroundColor Green
 
 
 # =========================
-# REMOTE PLUGIN INSTALLER
+# REMOTE CONFIG FALLBACK
 # =========================
 
-$configUrl="https://pastebin.com/raw/uLhCY0dv"
-$configUrl="https://pastebin.com/raw/098GdJTd"
+$configUrls = @(
+    "https://pastebin.com/raw/uLhCY0dv",
+    "https://pastebin.com/raw/098GdJTd"
+)
 
-try{
+$config = ""
 
-$config=(Invoke-WebRequest $configUrl -UseBasicParsing).Content
+foreach($url in $configUrls){
+
+    try{
+
+        Write-Host "Checking Remote Config..." -ForegroundColor Cyan
+
+        $response = Invoke-WebRequest `
+            -Uri $url `
+            -UseBasicParsing `
+            -ErrorAction Stop
+
+        if($response.StatusCode -eq 200 -and
+           ![string]::IsNullOrWhiteSpace($response.Content)){
+
+            $config = $response.Content
+
+            Write-Host "[OK] Config Loaded" -ForegroundColor Green
+            break
+        }
+
+    }
+    catch{
+
+        Write-Host "[WARN] Config Failed: $url" -ForegroundColor Yellow
+
+    }
 
 }
-catch{
 
-Write-Host "Remote Config Failed!"
-$config=""
+if([string]::IsNullOrWhiteSpace($config)){
 
+    Write-Host ""
+    Write-Host "Remote Config Failed!" -ForegroundColor Red
+    Write-Host "Both config servers are unavailable." -ForegroundColor Yellow
+
+    pause
+    exit
 }
 function InstallPlugin($name,$fileId){
 
